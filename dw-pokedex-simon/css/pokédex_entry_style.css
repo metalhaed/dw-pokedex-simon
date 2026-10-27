@@ -1,0 +1,259 @@
+/* #region resets */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    /* sets all text to nunito sans by default */
+    font-family: "Nunito Sans", sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* button { border: none; background: none } deletes button affordances
+This is fine if you restyle buttons immediately (you do in component CSS), but note the side effect: it also removes some browsers' default focus indication, so make sure you have a :focus-visible style somewhere — otherwise keyboard users can't see which button is focused. */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    overflow-wrap: break-word;
+}
+
+/* a { text-decoration: none; color: inherit } is opinionated for a "base"
+Underlines are the primary affordance that says "this is a link." Removing them globally means body-text links become invisible unless you re-add them per component. Consider keeping text-decoration: underline (or text-decoration-thickness / underline-offset for a nicer look) and only removing it in nav/footer contexts. */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ul, ol { list-style: none } removes list semantics
+This is the one I'd push back on hardest. It's not just bullets disappearing — when a list has no markers, Safari + VoiceOver stop announcing it as a list at all, so screen-reader users lose the "list, 4 items" context for your actual content lists. Since you already have padding: 0 removing indentation, the markers look fine anyway. Better approach: keep list-style on by default and only unstyle navigation lists: */
+ul,
+ol {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* #endregion resets */
+
+body {
+    background: #B8B8B8;
+    max-width: 480px;
+    margin: 0 auto;
+    color: #333;
+}
+
+/* #region header */
+header {
+    padding: 1rem;
+}
+
+/* adjust the header section */
+.head-row {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+
+/* sets both width and height explicitly for the "arrow_back.svg", such that the SVG don't render at an unexpected size or get distorted */
+.back-button img {
+    width: 28px;
+    height: 28px;
+}
+
+/* decides pokémon name color and font style */
+.pokemon-name {
+    color: white;
+    font-size: 1.4rem;
+    flex: 1;
+}
+
+/* decides pokémon id color and font style */
+.pokemon-number {
+    color: white;
+    font-weight: bold;
+}
+
+/* creates shadow for the pokémon name and id */
+.pokemon-name,
+.pokemon-number {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.50);
+}
+
+/* adjusts the sprite/pokémon-image position and ensure the arrows are on each side */
+.sprite-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+/* sets the width of the sprite */
+.sprite {
+    width: 55%;
+}
+
+/* sets the width of the chevron arrow */
+.chev_arrow img {
+    width: 28px;
+}
+
+/* matches ".arrow img" such as to keep the sprite perfectly centered */
+.arrow-spacer {
+    width: 28px;
+}
+
+/* #endregion header */
+
+/* #region main */
+/* creates the white card */
+main {
+    background: #EFEFEF;
+    border-radius: 24px 24px 24px 24px;
+    padding: 2rem 1.25rem;
+}
+
+/* #region creates the type pills */
+.types {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.type-pill {
+    background: #666;
+    color: white;
+    font-size: .8rem;
+    padding: .3rem 1rem;
+    border-radius: 999px;
+}
+
+/* #endregion creates the type pills */
+
+/* styles pokémon name */
+h2 {
+    text-align: center;
+    color: #999;
+    font-size: 1rem;
+    margin: 1.25rem 0;
+}
+
+/* #region positions and styles the about region: weight, height and description */
+.facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: end;
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.fact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .25rem;
+}
+
+.fact-icon {
+    width: 20px;
+}
+
+.fact-value {
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+.fact-label {
+    color: #999;
+    font-size: .75rem;
+}
+
+.description {
+    margin-bottom: 1rem;
+}
+
+/* #endregion positions and styles the about part: weight, height and description */
+
+/* #region styles the base stat region: hit points, attack, defence, special-attack, special-defence, speed */
+.stat-row {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .3rem 0;
+}
+
+.stat-name {
+    width: 2.5rem;
+    color: #999;
+    font-size: .8rem;
+}
+
+.stat-value {
+    width: 2.25rem;
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+.bar {
+    flex: 1;
+    height: 6px;
+    background: #EEEEEE;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: #AAAAAA;
+}
+
+/* #endregion styles the base stat region: hit points, attack, defence, special-attack, special-defence, speed */
+
+/* #endregion main */

@@ -1,0 +1,180 @@
+/* #region resets */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    /* sets all text to nunito sans by default */
+    font-family: "Nunito Sans", sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+/* button { border: none; background: none } deletes button affordances
+This is fine if you restyle buttons immediately (you do in component CSS), but note the side effect: it also removes some browsers' default focus indication, so make sure you have a :focus-visible style somewhere — otherwise keyboard users can't see which button is focused. */
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    overflow-wrap: break-word;
+}
+
+/* a { text-decoration: none; color: inherit } is opinionated for a "base"
+Underlines are the primary affordance that says "this is a link." Removing them globally means body-text links become invisible unless you re-add them per component. Consider keeping text-decoration: underline (or text-decoration-thickness / underline-offset for a nicer look) and only removing it in nav/footer contexts. */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ul, ol { list-style: none } removes list semantics
+This is the one I'd push back on hardest. It's not just bullets disappearing — when a list has no markers, Safari + VoiceOver stop announcing it as a list at all, so screen-reader users lose the "list, 4 items" context for your actual content lists. Since you already have padding: 0 removing indentation, the markers look fine anyway. Better approach: keep list-style on by default and only unstyle navigation lists: */
+ul,
+ol {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* #endregion resets */
+
+body {
+    font-family: sans-serif;
+    background: #DC0A2D;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* #region header */
+header {
+    background-color: #DC0A2D;
+    padding: 1rem;
+}
+
+/* sets the header as one horizontal row logo, title, button */
+.top-row {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+/* desides the size of the icon (pokeball.svg) */
+.logo img {
+    width: 26px;
+}
+
+/* ensures the correct placement and color of the title (Pokédex) */
+.page-title {
+    color: white;
+    font-size: 1.4rem;
+    flex: 1;
+}
+
+/* ensures the correct size of the buttons */
+.button img {
+    width: 38px;
+    height: 38px;
+}
+
+/* sets the width of the searchbar */
+.search {
+    width: 100%;
+    margin-top: .75rem;
+    border: none;
+    border-radius: 999px;
+    padding: .65rem 1rem;
+}
+
+/* #endregion header */
+
+
+/* #region main */
+/* creates 3 equal columns for the pokédex */
+.pokédex_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .75rem;
+    padding: .75rem;
+}
+
+/* creates the cards in the grid */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: .5rem;
+    text-align: center;
+}
+
+/* ensures the correct placement and color of the pokémon id i.e. (#1-#2-#3) */
+.card-number {
+    display: block;
+    text-align: right;
+    color: #999;
+    font-size: .75rem;
+}
+
+/* sets the width of the cards in the grid */
+.card-img {
+    width: 80%;
+}
+
+/* adjusts the size of the names on the cards */
+.card-name {
+    font-size: .9rem;
+}
+
+/* links would normally be blue-underlined by default this makes them plain dark text instead */
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* fixes an issue apparently brought on by viewport boundaries by making sure the "sentinel <div>" has a height of more than 0px */
+#sentinel {
+    height: 4px;
+}
+
+/* #endregion main */
